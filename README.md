@@ -5,7 +5,7 @@
 О чем: данный проект позволяет опубликовать фото от имени определенного человека;
 
 Где можно посмотреть проект: в браузерах Yandex, Chrome, Mozilla.
-По ссылке: https://shevchenkoekaterina.github.io/ShevchenkoE-mesto/
+По ссылке: https://shevchenkoekaterina.github.io/ShevchenkoE-mesto/index.html
 
 Какие технологии использованы: 
 1. Адаптивная верстка;
