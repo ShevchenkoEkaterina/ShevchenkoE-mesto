@@ -1,0 +1,14 @@
+.profile__edit-name {
+    margin: 0 0 16px 30px;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 767px) {
+    .profile__edit-name {
+      margin: 22.25px auto 14px auto;
+    }
+  }

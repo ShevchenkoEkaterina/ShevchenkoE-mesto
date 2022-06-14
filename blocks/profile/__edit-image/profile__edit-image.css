@@ -1,0 +1,9 @@
+.profile__edit-image {
+    margin: 0;
+    padding: 0;
+    background-image: url(../../../images/Pen.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 10px;
+    height: 10px;
+  }
