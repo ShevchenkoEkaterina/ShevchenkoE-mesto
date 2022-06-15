@@ -7,6 +7,8 @@
     background-image: url(../../../images/heart.svg);
     background-size: contain;
     background-repeat: no-repeat;
+    border: none;
+    background-color: rgba(1, 0, 0, 0);
 }
 
 .element__like:hover {

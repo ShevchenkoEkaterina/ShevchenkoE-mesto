@@ -4,9 +4,11 @@
     border: 1px solid #FFFFFF;
     width: 24px;
     height: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-image: url(../../../images/Pen.svg);
+    background-size: 10px 10px;
+    background-repeat: no-repeat;
+    background-color: rgba(1, 0, 0, 0);
+    background-position: center;
   }
 
   .profile__edit-button:hover {

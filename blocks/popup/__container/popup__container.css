@@ -1,17 +1,16 @@
 .popup__container {
-    width: 430px;
-    height: 330px;
+    width: 470px;
+    height: 370px;
     margin: auto;
     padding: 0;
-    background: #FFFFFF;
-    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0);
     display: flex;
     flex-direction: column;
   }
 
   @media (max-width: 767px) {
     .popup__container {
-        width: 282px;
-        height: 322px;
+      width: 282px;
+      height: 350px;
     }
   }

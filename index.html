@@ -13,7 +13,6 @@
   <div class="page__container">
     <header class="header">
       <img class="header__logo" src="./images/Logo.svg" alt="Логотип">
-      <div class="header__line"></div>
     </header>
     <main>
       <section class="profile">
@@ -22,16 +21,12 @@
           <div class="profile__info">
             <div class="profile__edit-name">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
-              <a class="profile__edit-button" href="#">
-                <div class="profile__edit-image"></div>
-              </a>
+              <button class="profile__edit-button"></button>
             </div>
             <p class="profile__description">Исследователь океана</p>
           </div>
         </div>
-        <a class="profile__add-button" href="#">
-          <div class="profile__add-image"></div>
-        </a>
+        <button class="profile__add-button"></button>
       </section>
       <section>
         <ul class="elements">
@@ -39,42 +34,42 @@
             <img class="element__image" src="./images/Church.jpg" alt="Полуразваленная церковь в горах">
             <div class="element__bottom">
               <h2 class="element__description">Карачаевск</h2>
-              <a class="element__like element__like_active" href="#"></a>
+              <button class="element__like element__like_active"></button>
            </div>
           </li>
           <li class="element">
             <img class="element__image" src="./images/Field.png" alt="Закат на поле">
             <div class="element__bottom">
               <h2 class="element__description">Гора Эльбрус</h2>
-              <a class="element__like element__like_active" href="#"></a>
+              <button class="element__like element__like_active"></button>
             </div>
           </li>
           <li class="element">
             <img class="element__image" src="./images/Mountain.png" alt="На переднем плане гора с лесом, на заднем заснеженная гора">
             <div class="element__bottom">
               <h2 class="element__description">Домбай</h2>
-              <a class="element__like element__like_active" href="#"></a>
+              <button class="element__like element__like_active"></button>
            </div>
           </li>
           <li class="element">
             <img class="element__image" src="./images/Field.png" alt="Закат на поле">
             <div class="element__bottom">
               <h2 class="element__description">Гора Эльбрус</h2>
-              <a class="element__like element__like_active" href="#"></a>
+              <button class="element__like element__like_active"></button>
             </div>
           </li>
           <li class="element">
             <img class="element__image" src="./images/Mountain.png" alt="На переднем плане гора с лесом, на заднем заснеженная гора">
             <div class="element__bottom">
               <h2 class="element__description">Домбай</h2>
-              <a class="element__like element__like_active" href="#"></a>
+              <button class="element__like element__like_active"></button>
             </div>
           </li>
           <li class="element">
             <img class="element__image" src="./images/Church.jpg" alt="Полуразваленная церковь в горах">
             <div class="element__bottom">
               <h2 class="element__description">Карачаево-Чeркессия</h2>
-              <a class="element__like element__like_active" href="#"></a>
+              <button class="element__like element__like_active"></button>
             </div>
           </li>
         </ul>
@@ -83,20 +78,18 @@
     <footer class="footer">
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
-    <div class="popup">
-      <button class="popup__close">
-        <img src="./images/Close-Icon.svg" alt="Закрывающая иконка">
-      </button>
+    <section class="popup">
       <div class="popup__container">
-        <h2 class="popup__title">Редактировать профиль</h2>
+        <button class="popup__close"></button>
         <form class="input">
+          <h2 class="popup__title">Редактировать профиль</h2>
           <input type="text" placeholder="Имя" class="input__text input__text_name">
           <input type="text" placeholder="О себе" class="input__text input__text_description">
-          <button type="submit" class="input__save-button">Сохранить</button>
+          <button class="input__save-button">Сохранить</button>
        </form>
       </div>
-    </div>
+    </section>
   </div>
-<script src="script.js"></script> 
+<script src="./scripts/script.js"></script> 
 </body>
 </html>
