@@ -10,6 +10,7 @@
     line-height: 1.22;
     text-align: center;
     color: #FFFFFF;
+    border: none;
   }
 
   .input__save-button:hover {

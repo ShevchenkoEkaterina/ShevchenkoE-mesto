@@ -4,26 +4,21 @@
     display: grid;
     grid-gap: 20px 17px;
     grid-template-columns: repeat(3, 282px);
-    grid-template-rows: repeat(3, 361px);
+    grid-template-rows: repeat(361px);
     list-style-type: none;
     max-width: 880px;
-    max-height: 744px;
 }
 
 @media (max-width: 1023px) {
   .elements {
     max-width: 598px;
-    max-height: 1143px;
     grid-template-columns: repeat(2, 282px);
-    grid-template-rows: repeat(4, 361px);
   }
 }
 
 @media (max-width: 767px) {
     .elements {
       max-width: 282px;
-      max-height: 2268px;
       grid-template-columns: repeat(1, 282px);
-      grid-template-rows: repeat(6, 361px);
     }
   }
