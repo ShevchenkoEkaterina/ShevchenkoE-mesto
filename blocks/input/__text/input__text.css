@@ -1,18 +1,19 @@
 .input__text {
     margin: 0 0 30px 36px;
-    padding: 0 0 13px 0;
+    padding: 0 0 12px 0;
     font-weight: 400;
     font-size: 14px;
     line-height: 1.2;
     color: #000000;
     border: none;
-    max-width: 358px;
-    max-height: 27px;
+    width: 358px;
+    height: 14px;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
 }
 
 @media (max-width: 767px) {
     .input__text {
-      max-width: 238px;
+      width: 238px;
+      margin: 0 auto 30px 22px;
     }
   }

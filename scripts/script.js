@@ -19,6 +19,7 @@ let nameInput = document.querySelector('.input__text_name');
 let jobInput = document.querySelector('.input__text_description');
 let profileName = document.querySelector('.profile__name');
 let profileDescription = document.querySelector('.profile__description');
+let inputSaveButton = document.querySelector('.input__save-button');
 
 nameInput.value = profileName.textContent;
 jobInput.value = profileDescription.textContent;
@@ -30,3 +31,4 @@ function formSubmitHandler (event) {
 }
 
 formElement.addEventListener('submit', formSubmitHandler);
+inputSaveButton.addEventListener('click', closePopup);
