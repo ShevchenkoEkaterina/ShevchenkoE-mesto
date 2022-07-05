@@ -30,65 +30,60 @@
       </section>
       <section>
         <ul class="elements">
-          <li class="element">
-            <img class="element__image" src="./images/Church.jpg" alt="Полуразваленная церковь в горах">
-            <div class="element__bottom">
-              <h2 class="element__description">Карачаевск</h2>
-              <button type="button" class="element__like element__like_active"></button>
-           </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/Field.png" alt="Закат на поле">
-            <div class="element__bottom">
-              <h2 class="element__description">Гора Эльбрус</h2>
-              <button type="button" class="element__like"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/Mountain.png" alt="На переднем плане гора с лесом, на заднем заснеженная гора">
-            <div class="element__bottom">
-              <h2 class="element__description">Домбай</h2>
-              <button type="button" class="element__like"></button>
-           </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/Field.png" alt="Закат на поле">
-            <div class="element__bottom">
-              <h2 class="element__description">Гора Эльбрус</h2>
-              <button type="button" class="element__like"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/Mountain.png" alt="На переднем плане гора с лесом, на заднем заснеженная гора">
-            <div class="element__bottom">
-              <h2 class="element__description">Домбай</h2>
-              <button type="button" class="element__like"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/Church.jpg" alt="Полуразваленная церковь в горах">
-            <div class="element__bottom">
-              <h2 class="element__description">Карачаево-Чeркессия</h2>
-              <button type="button" class="element__like"></button>
-            </div>
-          </li>
         </ul>
       </section>
     </main>
     <footer class="footer">
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
-    <div class="popup">
+    <div class="popup popup__edit">
       <div class="popup__container">
         <button type="button" class="popup__close"></button>
-        <form class="input">
+        <form class="input input__edit">
           <h2 class="popup__title">Редактировать профиль</h2>
-          <input type="text" placeholder="Имя" class="input__text input__text_name">
-          <input type="text" placeholder="О себе" class="input__text input__text_description">
-          <button type="submit" class="input__save-button">Сохранить</button>
+          <input type="text" placeholder="Имя" class="input__text input__edit__text_name">
+          <input type="text" placeholder="О себе" class="input__text input__edit__text_description">
+          <button type="submit" class="input__save-button input__edit__save-button">Сохранить</button>
        </form>
       </div>
     </div>
+    <div class="popup popup__show">
+      <div class="popup__container">
+        <button type="button" class="popup__close popup__show-close"></button>
+        <img src="#" class="popup__image">
+        <h2 class="popup__show-title"></h2>
+      </div>
+    </div>
+    <div class="popup popup__add">
+      <div class="popup__container">
+        <button type="button" class="popup__close popup__add-close"></button>
+        <form class="input input__add">
+          <h2 class="popup__title">Новое место</h2>
+          <input type="text" placeholder="Название" class="input__text input__add__text_name">
+          <input type="text" placeholder="Ссылка на картинку" class="input__text input__add__text_description">
+          <button type="submit" class="input__save-button input__add__save-button">Создать</button>
+       </form>
+      </div>
+    </div>
+    <div class="popup popup__show">
+      <div class="popup__container popup__container_show">
+        <button type="button" class="popup__close popup__show-close"></button>
+        <img src="#" class="popup__image">
+        <h2 class="popup__show-title"></h2>
+      </div>
+    </div>
+    <template class="element-template">
+        <li class="element">
+          <div class="element__upp">
+            <img class="element__image">
+            <button type="button" class="element__delete"></button>
+          </div>
+          <div class="element__bottom">
+            <h2 class="element__description"></h2>
+            <button type="button" class="element__like"></button>
+         </div>
+        </li>
+      </template>
   </div>
 <script src="./scripts/script.js"></script> 
 </body>

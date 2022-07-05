@@ -8,6 +8,7 @@
     height: 32px;
     border: none;
     align-self: flex-end;
+    background-repeat: no-repeat;
   }
 
   .popup__close:hover {
