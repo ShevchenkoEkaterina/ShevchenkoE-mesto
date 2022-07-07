@@ -64,8 +64,8 @@ popupClose.addEventListener('click', closePopup);
 addPopupClose.addEventListener('click', closePopup);
 
 const formElement = document.querySelector('.input_edit');
-const nameInput = document.querySelector('.input_edit-text-name');
-const jobInput = document.querySelector('.input_edit-text-description');
+const nameInput = document.querySelector('.input__text_name_edit');
+const jobInput = document.querySelector('.input__text_description_edit');
 const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
 
