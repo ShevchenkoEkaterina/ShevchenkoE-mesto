@@ -64,8 +64,8 @@ popupClose.addEventListener('click', closePopup);
 addPopupClose.addEventListener('click', closePopup);
 
 const formElement = document.querySelector('.input_edit');
-const nameInput = document.querySelector('.input_edit_text_name');
-const jobInput = document.querySelector('.input_edit_text_description');
+const nameInput = document.querySelector('.input_edit-text-name');
+const jobInput = document.querySelector('.input_edit-text-description');
 const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
 
@@ -81,7 +81,7 @@ function formSubmitHandler (event) {
 formElement.addEventListener('submit', formSubmitHandler);
 formElement.addEventListener('submit', closePopup);
 
-const formAddElement = document.querySelector('.input__add');
+const formAddElement = document.querySelector('.input_add');
 
 function addCard (imageValue, nameValue) {
   const elementTemplate = document.querySelector('.element-template').content;
@@ -93,8 +93,8 @@ function addCard (imageValue, nameValue) {
 
 function addSubmitHandler (event) {
   event.preventDefault();
-  const name = document.querySelector('.input_add_text_name');
-  const image = document.querySelector('.input_add_text_description');
+  const name = document.querySelector('.input_add-text-name');
+  const image = document.querySelector('.input_add-text-description');
   addCard(image.value, name.value);
   image.value ="";
   name.value ="";
