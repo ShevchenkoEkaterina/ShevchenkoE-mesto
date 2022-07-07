@@ -9,8 +9,6 @@ const addPopupClose = document.querySelector('.popup__add-close');
 const showPopupClose = document.querySelector('.popup__show-close');
 const elementsList = document.querySelector('.elements');
 const elementTemplate = document.querySelector('.element-template').content;
-const popupImage = document.querySelector('.popup__image');
-const titleImage = document.querySelector('.popup__show-title');
 const initialCards = [
     {
       name: 'Архыз',
@@ -88,19 +86,8 @@ const formAddElement = document.querySelector('.input__add');
 function addCard (imageValue, nameValue) {
   const elementTemplate = document.querySelector('.element-template').content;
   const cardElement = elementTemplate.querySelector('.element').cloneNode(true);
-  elementTemplate.querySelector('.element__image').src = imageValue;
-  elementTemplate.querySelector('.element__description').textContent = nameValue;
-
-  const likeButton = document.querySelector('.element__like');
-  likeButton.addEventListener('click', function (evt) {
-  evt.target.classList.toggle('element__like_active');
-});
-
-const deleteButton = document.querySelector('.element__delete');
-deleteButton.addEventListener('click', function () {
-  const listItem = deleteButton.closest('.element');
-  listItem.remove();
-});
+  cardElement.querySelector('.element__image').src = imageValue;
+  cardElement.querySelector('.element__description').textContent = nameValue;
   elementsList.prepend(cardElement);
 };
 
@@ -116,10 +103,14 @@ function addSubmitHandler (event) {
 formAddElement.addEventListener('submit', addSubmitHandler)
 formAddElement.addEventListener('submit', closePopup);
 
+const popupImage = document.querySelector('.popup__image');
+const titleImage = document.querySelector('.popup__show-title');
 const elementImage = document.querySelectorAll('.element__image');
+
 function openShowPopup (event) {
   showPopup.classList.add('popup_opened');
-  popupImage.src = event.target.src
+  popupImage.src = event.target.src;
+  titleImage.textContent = event.target.textContent;
 };
 
 elementImage.forEach(function (button) {
@@ -127,3 +118,13 @@ elementImage.forEach(function (button) {
 });
 
 showPopupClose.addEventListener('click', closePopup);
+const likeButton = document.querySelector('.element__like');
+likeButton.addEventListener('click', function (evt) {
+evt.target.classList.toggle('element__like_active');
+});
+
+const deleteButton = document.querySelector('.element__delete');
+deleteButton.addEventListener('click', function () {
+const listItem = deleteButton.closest('.element');
+listItem.remove();
+});

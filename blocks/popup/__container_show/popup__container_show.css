@@ -1,0 +1,8 @@
+.popup__container_show {
+    margin: 0 auto 0 auto;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
