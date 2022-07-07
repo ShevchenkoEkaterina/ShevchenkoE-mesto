@@ -93,8 +93,8 @@ function addCard (imageValue, nameValue) {
 
 function addSubmitHandler (event) {
   event.preventDefault();
-  const name = document.querySelector('.input_add-text-name');
-  const image = document.querySelector('.input_add-text-description');
+  const name = document.querySelector('.input__text_name_add');
+  const image = document.querySelector('.input__text_description_add');
   addCard(image.value, name.value);
   image.value ="";
   name.value ="";
