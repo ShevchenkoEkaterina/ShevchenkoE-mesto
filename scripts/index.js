@@ -7,7 +7,6 @@ const buttonPopupEditClose = document.querySelector('.popup__edit-close');
 const buttonPopupAddClose = document.querySelector('.popup__add-close');
 const buttonPopupShowClose = document.querySelector('.popup__show-close');
 const cardsList = document.querySelector('.elements');
-const card = document.querySelector('.element');
 const cardTemplate = document.querySelector('.element-template').content.querySelector('.element');
 const formEditInput = document.querySelector('.input_edit');
 const nameInput = document.querySelector('.input__text_name_edit');
@@ -17,7 +16,6 @@ const profileDescription = document.querySelector('.profile__description');
 const formAddInput = document.querySelector('.input_add');
 const popupImage = document.querySelector('.popup__image');
 const titleImage = document.querySelector('.popup__show-title');
-const imageList = document.querySelectorAll('.element__image');
 const nameAddInput = document.querySelector('.input__text_name_add');
 const imageAddInput = document.querySelector('.input__text_description_add');
 
@@ -28,9 +26,10 @@ function openPopup(popup) {
 
 //открытие попапа редактирования профиля
 function openEditPopup() {
-  openPopup(popupEdit);
   nameInput.value = profileName.textContent;
   jobInput.value = profileDescription.textContent;
+
+  openPopup(popupEdit);
 };
 
 //закрытие попапа
@@ -44,7 +43,7 @@ function handleEditProfileSubmit(event) {
   profileName.textContent = nameInput.value;
   profileDescription.textContent = jobInput.value;
 
-  formEditInput.addEventListener('submit', closePopup(popupEdit));
+  closePopup(popupEdit);
 };
 
 //создание/удаление/лайк карточки
@@ -56,10 +55,11 @@ function createCard(cardData) {
   card.querySelector('.element__description').textContent = cardData.name;
 
   cardImage.addEventListener('click', function () {
-    openPopup(popupShow);
     popupImage.src = cardData.link;
     popupImage.alt = cardData.link;
     titleImage.textContent = cardData.name;
+
+    openPopup(popupShow);
   });
 
   const likeButton = card.querySelector('.element__like');
@@ -72,7 +72,7 @@ function createCard(cardData) {
     card.remove();
   });
 
-return card;
+  return card;
 };
 
 //добавление карточек
@@ -86,13 +86,13 @@ initialCards.forEach(function (cardData) {
 });
 
 //добавление новых карточек
-function handleAddProfileSubmit(event) {
+function handleAddCardSubmit(event) {
   event.preventDefault();
   addCard(imageAddInput.value, nameAddInput.value);
   imageAddInput.value ="";
   nameAddInput.value ="";
 
-  formAddInput.addEventListener('submit', closePopup(popupAdd));
+  closePopup(popupAdd);
 };
 
 //слушатели
@@ -104,7 +104,7 @@ buttonPopupAddClose.addEventListener('click', function openAddPopup() {
   closePopup(popupAdd);
 });
 formEditInput.addEventListener('submit', handleEditProfileSubmit);
-formAddInput.addEventListener('submit', handleAddProfileSubmit)
+formAddInput.addEventListener('submit', handleAddCardSubmit)
 buttonPopupShowClose.addEventListener('click', function openAddPopup() {
   closePopup(popupShow);
 });
