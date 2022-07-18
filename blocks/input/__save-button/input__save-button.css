@@ -13,15 +13,15 @@
     border: none;
   }
 
-  .input__save-button:hover {
-    cursor: pointer;
-    opacity: 0.8;
-  }
+.input__save-button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
 
-  @media (max-width: 767px) {
-    .input__save-button {
-        margin: 15px auto 25px auto;
-        width: 238px;
-        height: 46px;
-    }
+@media (max-width: 767px) {
+  .input__save-button {
+      margin: 15px auto 25px auto;
+       width: 238px;
+      height: 46px;
   }
+}
