@@ -53,7 +53,6 @@ function hasInvalidInput(inputList) {
 function setEventListeners(formElement, { inputSelector, submitButtonSelector, ...rest }) {
   const inputList = Array.from(formElement.querySelectorAll(inputSelector));
   const buttonElement = formElement.querySelector(submitButtonSelector);
-  // toggleButtonState(inputList, buttonElement, rest);
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
       checkInputValidity(formElement, inputElement, rest);
