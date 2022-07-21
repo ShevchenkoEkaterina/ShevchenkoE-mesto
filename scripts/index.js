@@ -9,7 +9,7 @@ const buttonPopupShowClose = document.querySelector('.popup__show-close');
 const cardsList = document.querySelector('.elements');
 const cardTemplate = document.querySelector('.element-template').content.querySelector('.element');
 const formEditInput = document.querySelector('.input_edit');
-const inputSaveButton = document.querySelector('.input__save-button');
+const inputSaveButtonList = document.querySelectorAll('.input__save-button');
 const nameInput = document.querySelector('.input__text_name_edit');
 const jobInput = document.querySelector('.input__text_description_edit');
 const profileName = document.querySelector('.profile__name');
@@ -20,9 +20,14 @@ const titleImage = document.querySelector('.popup__show-title');
 const nameAddInput = document.querySelector('.input__text_name_add');
 const imageAddInput = document.querySelector('.input__text_description_add');
 
+
 //открытие попапа
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+
+  inputSaveButtonList.forEach(function (button) {
+    disableButton(button);
+  });
 };
 
 //открытие попапа редактирования профиля
@@ -101,7 +106,7 @@ initialCards.forEach(function (cardData) {
 //добавление новых карточек
 function handleAddCardSubmit(event) {
   event.preventDefault();
-  addCard(imageAddInput.value, nameAddInput.value);
+  addCard({link: imageAddInput.value, name: nameAddInput.value});
   imageAddInput.value ="";
   nameAddInput.value ="";
 
