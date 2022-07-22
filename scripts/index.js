@@ -18,22 +18,27 @@ const popupImage = document.querySelector('.popup__image');
 const titleImage = document.querySelector('.popup__show-title');
 const nameAddInput = document.querySelector('.input__text_name_add');
 const imageAddInput = document.querySelector('.input__text_description_add');
-const popupOpened = document.querySelector('.popup_opened');
 const inputSaveButtonAdd = document.querySelector('.input__save-button_add');
 const inputSaveButtonEdit = document.querySelector('.input__edit-save-button');
 
 //закрытие попапа путем нажатия на кнопку
-function handleKey(evt) {
-  if(evt.key === 'Escape') {
-    closePopup(popupOpened);
+function handleEscKeyPress(evt) {
+  if(evt.key === 'Escape' & popupEdit.classList.contains('popup_opened')) {
+    closePopup(popupEdit)
   };
-}
+  if(evt.key === 'Escape' & popupAdd.classList.contains('popup_opened')) {
+    closePopup(popupAdd)
+  };
+  if(evt.key === 'Escape' & popupShow.classList.contains('popup_opened')) {
+    closePopup(popupShow)
+  };
+};
 
 //открытие попапа
 function openPopup(popup) {
   popup.classList.add('popup_opened');
 
-  document.addEventListener('keydown', handleKey);
+  document.addEventListener('keydown', handleEscKeyPress);
 };
 
 //открытие попапа редактирования профиля
@@ -57,7 +62,7 @@ function openAddPopup() {
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
 
-  document.removeEventListener('keydown', handleKey);
+  document.removeEventListener('keydown', handleEscKeyPress);
 };
 
 //изменение имени и описания профиля
@@ -95,12 +100,6 @@ function createCard(cardData) {
   deleteButton.addEventListener('click', function () {
     card.remove();
   });
-
-  popupShow.addEventListener('click', function (evt) {
-    if(evt.target === evt.currentTarget) {
-      closePopup(popupShow);
-    }
-  })
 
   return card;
 };
