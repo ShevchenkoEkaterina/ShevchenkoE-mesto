@@ -4,8 +4,8 @@ import FormValidator from "./FormValidator.js"
 const popupEdit = document.querySelector('.popup_edit');
 const popupAdd = document.querySelector('.popup_add');
 const popupShow = document.querySelector('.popup_show');
-const editButton = document.querySelector('.profile__edit-button');
-const addButton = document.querySelector('.profile__add-button');
+const buttonPopupEdit = document.querySelector('.profile__edit-button');
+const buttonPopupAdd = document.querySelector('.profile__add-button');
 const buttonPopupEditClose = document.querySelector('.popup__edit-close');
 const buttonPopupAddClose = document.querySelector('.popup__add-close');
 const buttonPopupShowClose = document.querySelector('.popup__show-close');
@@ -20,8 +20,9 @@ const titleImage = document.querySelector('.popup__show-title');
 const nameAddInput = document.querySelector('.input__text_name_add');
 const imageAddInput = document.querySelector('.input__text_description_add');
 const cardsList = document.querySelector('.elements');
-const inputEditSaveButton = document.querySelector('.input__edit-save-button');
-const inputAddSaveButton = document.querySelector('.input__save-button_add');
+const buttoninputEditSave = document.querySelector('.input__edit-save-button');
+const buttoninputAddSave = document.querySelector('.input__save-button_add');
+const popupList = document.querySelectorAll('.popup');
 const config = {
   formSelector: '.input',
   inputSelector: '.input__text',
@@ -59,21 +60,16 @@ const initialCards = [
 
 //закрытие попапа путем нажатия на кнопку
 function handleEscKeyPress(evt) {
-  if(evt.key === 'Escape' & popupEdit.classList.contains('popup_opened')) {
-    closePopup(popupEdit)
-  };
-  if(evt.key === 'Escape' & popupAdd.classList.contains('popup_opened')) {
-    closePopup(popupAdd)
-  };
-  if(evt.key === 'Escape' & popupShow.classList.contains('popup_opened')) {
-    closePopup(popupShow)
-  };
+  if(evt.key === 'Escape') {
+    const activePopup = document.querySelector('.popup_opened')
+    closePopup(activePopup)
+  }
 };
 
 //открытие попапа
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-
+  closePopupByOverlay (popupList);
   document.addEventListener('keydown', handleEscKeyPress);
 };
 
@@ -86,13 +82,14 @@ function disableButton(buttonElement) {
 function openEditPopup() {
   nameInput.value = profileName.textContent;
   jobInput.value = profileDescription.textContent;
-  disableButton(inputEditSaveButton)
+  disableButton(buttoninputEditSave)
   openPopup(popupEdit);
 };
 
 //открытие попапа добавления картинки
 function openAddPopup() {
-  disableButton(inputAddSaveButton)
+  disableButton(buttoninputAddSave)
+  
   openPopup(popupAdd);
 };
 
@@ -121,31 +118,33 @@ function handleCardClick (name, link) {
   openPopup(popupShow);
 }
 
-//прогрузка изначальных карточек
-initialCards.forEach((item) => {
-  const card = new Card(item, '.element-template_type_default', handleCardClick);
+//создание карточек
+function createCard (element) {
+  const card = new Card(element, '.element-template_type_default', handleCardClick);
   const cardElement = card.generateCard();
   cardsList.prepend(cardElement);
+}
+
+//прогрузка изначальных карточек
+initialCards.forEach((item) => {
+  createCard (item)
 });
 
+//функция закрытия на оверлей
+function closePopupByOverlay (popups) {
+  popups.forEach((popup) => {
+  popup.addEventListener('click', function (evt) {
+    if(evt.target === evt.currentTarget) {
+      closePopup(popup);
+    };
+  });
+});
+};
+
 //слушатели
-popupEdit.addEventListener('click', function (evt) {
-  if(evt.target === evt.currentTarget) {
-    closePopup(popupEdit);
-  }
-});
-popupAdd.addEventListener('click', function (evt) {
-  if(evt.target === evt.currentTarget) {
-    closePopup(popupAdd);
-  }
-});
-popupShow.addEventListener('click', function (evt) {
-  if(evt.target === evt.currentTarget) {
-    closePopup(popupShow);
-  }
-});
-addButton.addEventListener('click', openAddPopup);
-editButton.addEventListener('click', openEditPopup);
+
+buttonPopupAdd.addEventListener('click', openAddPopup);
+buttonPopupEdit.addEventListener('click', openEditPopup);
 buttonPopupAddClose.addEventListener('click', function () {
   closePopup(popupAdd);
 });
@@ -158,9 +157,7 @@ buttonPopupEditClose.addEventListener('click', function () {
 });
 formAddInput.addEventListener('submit', function (event) {
   event.preventDefault();
-  const card = new Card({link: imageAddInput.value, name: nameAddInput.value}, '.element-template_type_default', handleCardClick);
-  const cardElement = card.generateCard();
-  cardsList.prepend(cardElement);
+  createCard ({link: imageAddInput.value, name: nameAddInput.value})
   imageAddInput.value ="";
   nameAddInput.value ="";
 

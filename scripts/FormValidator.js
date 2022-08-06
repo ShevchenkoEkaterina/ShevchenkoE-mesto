@@ -9,25 +9,25 @@ class FormValidator {
     this._formElement = formElement;
   }
 
-  _showInputError() {
-    const errorElement = document.querySelector('.input').querySelector(`#${document.querySelector('.input__text').id}-error`);
-    document.querySelector('.input__text').classList.add(this._inputErrorClass);
-    errorElement.textContent = document.querySelector('.input__text').validationMessage;
+  _showInputError(inputElement) {
+    const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
+    inputElement.classList.add(this._inputErrorClass);
+    errorElement.textContent = inputElement.validationMessage;
     errorElement.classList.add(this._errorClassActive);
   };
 
-  _hideInputError() {
-    const errorElement = document.querySelector('.input').querySelector(`#${document.querySelector('.input__text').id}-error`);
-    document.querySelector('.input__text').classList.remove(this._inputErrorClass);
+  _hideInputError(inputElement) {
+    const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
+    inputElement.classList.remove(this._inputErrorClass);
     errorElement.classList.remove(this._errorClassActive);
     errorElement.textContent = '';
   };
     
-  _checkInputValidity() {
+  _checkInputValidity(inputElement) {
     if (!document.querySelector('.input__text').validity.valid) {
-      this._showInputError();
+      this._showInputError(inputElement);
     } else {
-      this._hideInputError();
+      this._hideInputError(inputElement);
     }
   };
 
@@ -48,12 +48,12 @@ class FormValidator {
   };
     
   _setEventListeners() {
-    const inputList = Array.from(this._formElement.querySelectorAll('.input__text'));
-    const buttonElement = this._formElement.querySelector(this._submitButtonSelector);
-    inputList.forEach((inputElement) => {
-      inputElement.addEventListener('input',  () => {
-        this._checkInputValidity();
-        this._toggleButtonState(inputList, buttonElement);
+    this._inputList = Array.from(this._formElement.querySelectorAll('.input__text'));
+    this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
+    this._inputList.forEach((input) => {
+      input.addEventListener('input',  () => {
+        this._checkInputValidity(input);
+        this._toggleButtonState(this._inputList, this._buttonElement);
       });
     });
   };
