@@ -24,20 +24,20 @@ class FormValidator {
   };
     
   _checkInputValidity(inputElement) {
-    if (!document.querySelector('.input__text').validity.valid) {
+    if (!inputElement.validity.valid) {
       this._showInputError(inputElement);
     } else {
       this._hideInputError(inputElement);
     }
   };
 
-  _toggleButtonState(inputList, buttonElement) {
-    if (this._hasInvalidInput(inputList)) {
-      buttonElement.classList.add(this._inactiveButtonClass);
-      buttonElement.setAttribute('disabled', true);
+  _toggleButtonState() {
+    if (this._hasInvalidInput(this._inputList)) {
+      this._buttonElement.classList.add(this._inactiveButtonClass);
+      this._buttonElement.setAttribute('disabled', true);
     } else {
-      buttonElement.classList.remove(this._inactiveButtonClass);
-      buttonElement.removeAttribute('disabled');
+      this._buttonElement.classList.remove(this._inactiveButtonClass);
+      this._buttonElement.removeAttribute('disabled');
     }
   };
     
@@ -53,7 +53,7 @@ class FormValidator {
     this._inputList.forEach((input) => {
       input.addEventListener('input',  () => {
         this._checkInputValidity(input);
-        this._toggleButtonState(this._inputList, this._buttonElement);
+        this._toggleButtonState();
       });
     });
   };
