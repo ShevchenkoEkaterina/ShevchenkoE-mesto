@@ -1,15 +1,18 @@
 .popup__container-show {
   margin: 90px auto 0 auto;
-  padding: 0;
+  padding: 0 40px;
   position: fixed;
   display: flex;
   flex-direction: column;
-  left: 38%;
-  right: 38%;
+  left: 36%;
+  right: 36%;
 }
 
 @media (max-width: 767px) {
   .popup__container-show {
     margin: 136px auto 0 auto;
+    left: 12%;
+    right: 12%;
+    padding: 0 90px;
   }
 }

@@ -9,10 +9,9 @@
     background-repeat: no-repeat;
     border: none;
     background-color: rgba(1, 0, 0, 0);
+    cursor: pointer;
 }
 
 .element__like:hover {
-    background-image: url(../../../images/opacity.svg);
-    cursor: pointer;
-    opacity: 0;
+    opacity: 0.5;
 }
