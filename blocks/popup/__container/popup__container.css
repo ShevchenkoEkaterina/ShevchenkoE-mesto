@@ -1,7 +1,6 @@
 .popup__container {
     width: 470px;
     height: 370px;
-    margin: 195px auto 0 auto;
     padding: 0;
     background-color: rgba(0, 0, 0, 0);
     display: flex;
@@ -12,6 +11,5 @@
     .popup__container {
       width: 282px;
       height: 350px;
-      margin: 122px auto 0 auto;
     }
   }
