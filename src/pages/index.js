@@ -13,7 +13,6 @@ import {
   formEditInput,
   nameInput,
   jobInput,
-  inputEditList,
   formAddInput,
   nameAddInput,
   imageAddInput,
@@ -46,7 +45,8 @@ function handleAddProfileSubmit(event) {
 
 //редактирование имени и описания профиля
 function handleEditProfileSubmit() {
-  userInfo.setUserInfo();
+  userInfo.setUserInfo(nameInput.value, jobInput.value);
+  userInfo.getUserInfo()
 };
 
 //открытие попапа карточки
@@ -66,8 +66,7 @@ popupEditNew.setEventListeners();
 const popupWithImage = new PopupWithImage(".popup_show");
 popupWithImage.setEventListeners();
 
-const userInfo = new UserInfo ({userName: '.profile__name', userDescription: '.profile__description'});
-buttonPopupEdit.addEventListener('click', () => userInfo.setUserInfo());
+const userInfo = new UserInfo ({userNameSelector: '.profile__name', userDescriptionSelector: '.profile__description'});
 
 const formValidator = new FormValidator(config, formEditInput);
 formValidator.enableValidation();
