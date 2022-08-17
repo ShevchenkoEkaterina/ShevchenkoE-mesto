@@ -20,12 +20,12 @@
           <div class="profile__info">
             <div class="profile__edit-name">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
-              <button type="button" class="profile__edit-button"></button>
+              <button type="button" class="profile__edit-button profile__button"></button>
             </div>
             <p class="profile__description">Исследователь океана</p>
           </div>
         </div>
-        <button type="button" class="profile__add-button"></button>
+        <button type="button" class="profile__add-button profile__button"></button>
       </section>
       <section>
         <ul class="elements">
@@ -41,11 +41,11 @@
         <form class="input input_edit" novalidate>
           <h2 class="popup__title">Редактировать профиль</h2>
           <label class="input__field">
-            <input type="text" required minlength="2" maxlength="40" placeholder="Имя" id="name-input" class="input__text input__text_name_edit">
+            <input type="text" required minlength="2" maxlength="40" placeholder="Имя" name="name" id="name-input" class="input__text input__text_name_edit">
             <span class="input__text-error" id ="name-input-error"></span>
           </label>
           <label class="input__field">
-            <input type="text" required minlength="2" maxlength="200" placeholder="О себе" id="description-input" class="input__text input__text_description_edit">
+            <input type="text" required minlength="2" maxlength="200" placeholder="О себе" name="name" id="description-input" class="input__text input__text_description_edit">
             <span class="input__text-error" id ="description-input-error"></span>
           </label>
           <button type="submit" class="input__save-button input__edit-save-button">Сохранить</button>

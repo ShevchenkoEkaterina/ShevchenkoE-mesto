@@ -7,17 +7,13 @@ import UserInfo from "../components/UserInfo.js";
 import './index.css';
 
 import {
-  popupEdit,
   elements,
-  popupAdd,
-  popupShow,
   buttonPopupEdit,
   buttonPopupAdd,
   formEditInput,
   nameInput,
   jobInput,
-  profileName,
-  profileDescription,
+  inputEditList,
   formAddInput,
   nameAddInput,
   imageAddInput,
@@ -25,48 +21,52 @@ import {
   initialCards
 } from '../utils/constants.js';
 
+function createCard(item) {
+  const card = new Card(item, '.element-template_type_default', handleCardClick);
+  const cardElement = card.generateCard();
+  return cardElement;
+}
 //создание и прогрузка изначальных шести карточек
 const cardList = new Section({
   items: initialCards,
   renderer: (item) => {
-    const card = new Card(item, '.element-template_type_default', handleCardClick);
-    const cardElement = card.generateCard();
+    const cardElement = createCard(item)
     cardList.addItem(cardElement)
   }
-}, elements);
+}, ".elements");
 
 cardList.renderItems()
 
 //добавление карточек
 function handleAddProfileSubmit(event) {
   event.preventDefault();
-  const card = new Card({link: imageAddInput.value, name: nameAddInput.value}, '.element-template_type_default', handleCardClick);
-  const cardElement = card.generateCard();
+  const cardElement = createCard({link: imageAddInput.value, name: nameAddInput.value})
   elements.prepend(cardElement);
 };
 
 //редактирование имени и описания профиля
-function handleEditProfileSubmit(event) {
-  event.preventDefault();
-  const userInfo = new UserInfo ({userName: profileName, userDescription: profileDescription});
-  userInfo.getUserInfo();
+function handleEditProfileSubmit() {
+  userInfo.setUserInfo();
 };
 
 //открытие попапа карточки
 function handleCardClick (image, title) {
-  const popupWithImage = new PopupWithImage(popupShow);
+  const popupWithImage = new PopupWithImage(".popup_show");
   popupWithImage.open(image, title);
 };
 
-const popupAddNew = new PopupWithForm (popupAdd, handleAddProfileSubmit);
+const popupAddNew = new PopupWithForm (".popup_add", handleAddProfileSubmit);
 buttonPopupAdd.addEventListener('click', () => popupAddNew.open())
 popupAddNew.setEventListeners();
 
-const popupEditNew = new PopupWithForm (popupEdit, handleEditProfileSubmit);
+const popupEditNew = new PopupWithForm (".popup_edit", handleEditProfileSubmit);
 buttonPopupEdit.addEventListener('click', () => popupEditNew.open());
 popupEditNew.setEventListeners();
 
-const userInfo = new UserInfo ({userName: profileName, userDescription: profileDescription});
+const popupWithImage = new PopupWithImage(".popup_show");
+popupWithImage.setEventListeners();
+
+const userInfo = new UserInfo ({userName: '.profile__name', userDescription: '.profile__description'});
 buttonPopupEdit.addEventListener('click', () => userInfo.setUserInfo());
 
 const formValidator = new FormValidator(config, formEditInput);

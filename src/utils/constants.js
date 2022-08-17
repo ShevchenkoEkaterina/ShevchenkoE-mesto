@@ -1,14 +1,10 @@
-export const popupEdit = document.querySelector('.popup_edit');
 export const elements = document.querySelector('.elements');
-export const popupAdd = document.querySelector('.popup_add');
-export const popupShow = document.querySelector('.popup_show');
 export const buttonPopupEdit = document.querySelector('.profile__edit-button');
 export const buttonPopupAdd = document.querySelector('.profile__add-button');
 export const formEditInput = document.querySelector('.input_edit');
 export const nameInput = document.querySelector('.input__text_name_edit');
 export const jobInput = document.querySelector('.input__text_description_edit');
-export const profileName = document.querySelector('.profile__name');
-export const profileDescription = document.querySelector('.profile__description');
+export const inputEditList = document.querySelector('.input__text');
 export const formAddInput = document.querySelector('.input_add');
 export const nameAddInput = document.querySelector('.input__text_name_add');
 export const imageAddInput = document.querySelector('.input__text_description_add');
