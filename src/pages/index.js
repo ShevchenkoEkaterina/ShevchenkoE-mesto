@@ -7,15 +7,12 @@ import UserInfo from "../components/UserInfo.js";
 import './index.css';
 
 import {
-  elements,
   buttonPopupEdit,
   buttonPopupAdd,
   formEditInput,
   nameInput,
   jobInput,
   formAddInput,
-  nameAddInput,
-  imageAddInput,
   config,
   initialCards
 } from '../utils/constants.js';
@@ -36,31 +33,34 @@ const cardList = new Section({
 
 cardList.renderItems()
 
-//добавление карточек
-function handleAddProfileSubmit(event) {
-  event.preventDefault();
-  const cardElement = createCard({link: imageAddInput.value, name: nameAddInput.value})
-  elements.prepend(cardElement);
-};
-
-//редактирование имени и описания профиля
-function handleEditProfileSubmit() {
-  userInfo.setUserInfo(nameInput.value, jobInput.value);
-  userInfo.getUserInfo()
-};
+//вставка текущий значений в инпуты редактирования
+function pasteEditProfile ({ name, description }) {
+  nameInput.value = name;
+  jobInput.value = description;
+}
 
 //открытие попапа карточки
 function handleCardClick (image, title) {
-  const popupWithImage = new PopupWithImage(".popup_show");
   popupWithImage.open(image, title);
 };
 
-const popupAddNew = new PopupWithForm (".popup_add", handleAddProfileSubmit);
-buttonPopupAdd.addEventListener('click', () => popupAddNew.open())
+const popupAddNew = new PopupWithForm ({popupSelector: ".popup_add", submitHandler: (data) => { ;
+const cardElement = createCard({link: data, name: data});
+cardList.addItem(cardElement);
+}});
+
+buttonPopupAdd.addEventListener('click', () => { popupAddNew.open(); formValidatorAdd.resetValidation(); });
 popupAddNew.setEventListeners();
 
-const popupEditNew = new PopupWithForm (".popup_edit", handleEditProfileSubmit);
-buttonPopupEdit.addEventListener('click', () => popupEditNew.open());
+const popupEditNew = new PopupWithForm ({popupSelector: ".popup_edit", submitHandler: (data) => {userInfo.setUserInfo(data)}});
+buttonPopupEdit.addEventListener('click', () => { 
+  const data = userInfo.getUserInfo();
+  pasteEditProfile ({
+    name: data.name,
+    description: data.description
+  });
+  popupEditNew.open()
+});
 popupEditNew.setEventListeners();
 
 const popupWithImage = new PopupWithImage(".popup_show");

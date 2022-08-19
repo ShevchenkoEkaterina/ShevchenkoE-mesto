@@ -1,4 +1,3 @@
-export const elements = document.querySelector('.elements');
 export const buttonPopupEdit = document.querySelector('.profile__edit-button');
 export const buttonPopupAdd = document.querySelector('.profile__add-button');
 export const formEditInput = document.querySelector('.input_edit');

@@ -31,9 +31,11 @@ class FormValidator {
     }
   };
 
-  _buttonState() {
-    this._buttonElement.classList.add(this._inactiveButtonClass);
-    this._buttonElement.setAttribute('disabled', true);
+  resetValidation() {
+    this._toggleButtonState();
+    this._inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement);
+    });
   };
 
   _toggleButtonState() {
@@ -55,12 +57,6 @@ class FormValidator {
   _setEventListeners() {
     this._inputList = Array.from(this._formElement.querySelectorAll('.input__text'));
     this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
-    const profileButtonList = document.querySelectorAll('.profile__button');
-    profileButtonList.forEach((profileButton) => {
-      profileButton.addEventListener('click',  () => {
-        this._buttonState()
-      });
-    });
     this._inputList.forEach((input) => {
       input.addEventListener('input',  () => {
         this._checkInputValidity(input);
