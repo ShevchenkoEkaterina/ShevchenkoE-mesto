@@ -45,14 +45,14 @@ function handleCardClick (image, title) {
 };
 
 const popupAddNew = new PopupWithForm ({popupSelector: ".popup_add", submitHandler: (data) => { ;
-const cardElement = createCard({link: data, name: data});
+const cardElement = createCard({link: data.url, name: data.title});
 cardList.addItem(cardElement);
 }});
 
 buttonPopupAdd.addEventListener('click', () => { popupAddNew.open(); formValidatorAdd.resetValidation(); });
 popupAddNew.setEventListeners();
 
-const popupEditNew = new PopupWithForm ({popupSelector: ".popup_edit", submitHandler: (data) => {userInfo.setUserInfo(data)}});
+const popupEditNew = new PopupWithForm ({popupSelector: ".popup_edit", submitHandler: (data) => {userInfo.setUserInfo(data.name, data.description)}});
 buttonPopupEdit.addEventListener('click', () => { 
   const data = userInfo.getUserInfo();
   pasteEditProfile ({
