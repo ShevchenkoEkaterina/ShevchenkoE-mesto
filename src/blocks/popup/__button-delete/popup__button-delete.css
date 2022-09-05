@@ -1,4 +1,4 @@
-.input__save-button_delete {
+.popup__button-delete {
     padding: 0;
     margin: 18px auto 37px auto;
     width: 358px;
@@ -13,13 +13,13 @@
     border: none;
   }
 
-.input__save-button_delete:hover {
+.popup__button-delete:hover {
   cursor: pointer;
   opacity: 0.8;
 }
 
 @media (max-width: 767px) {
-  .input__save-button_delete {
+  .popup__button-delete {
       margin: 15px auto 25px auto;
       width: 238px;
       min-height: 46px;

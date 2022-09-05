@@ -12,7 +12,7 @@ export const buttonSave = document.querySelector('.input__save-button');
 export const nameAddInput = document.querySelector('.input__text_name_add');
 export const imageAddInput = document.querySelector('.input__text_description_add');
 export const profileAvatarPhoto = document.querySelector('.profile__photo');
-export const buttonDelete = document.querySelector('.input__save-button_delete');
+export const buttonDelete = document.querySelector('.popup__button-delete');
 
 export const config = {
   formSelector: '.input',
