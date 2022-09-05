@@ -1,4 +1,4 @@
-.popup__container_delete {
+.popup__container-delete {
     margin: 0;
     padding: 0;
     display: flex;
@@ -10,7 +10,7 @@
   }
 
   @media (max-width: 767px) {
-    .popup__container_delete {
+    .popup__container-delete {
       width: 282px;
     }
   }

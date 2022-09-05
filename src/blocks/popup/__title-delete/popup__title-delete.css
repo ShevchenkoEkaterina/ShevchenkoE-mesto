@@ -1,4 +1,4 @@
-.popup__title_delete {
+.popup__title-delete {
     margin: 34px 0 38px 36px;
     padding: 0;
     font-weight: 900;
@@ -9,7 +9,7 @@
   }
 
   @media (max-width: 767px) {
-    .popup__title_delete {
+    .popup__title-delete {
       font-size: 18px;
       height: 22px;
       margin: 25px auto 38px 22px;
