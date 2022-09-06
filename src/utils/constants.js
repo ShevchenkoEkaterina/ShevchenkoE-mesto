@@ -1,8 +1,5 @@
 export const buttonPopupEdit = document.querySelector('.profile__edit-button');
 export const buttonPopupAdd = document.querySelector('.profile__add-button');
-export const profileName = document.querySelector('.profile__name');
-export const profileDescription = document.querySelector('.profile__description');
-export const profileAvatar = document.querySelector('.profile__avatar');
 export const formEditInput = document.querySelector('.input_edit');
 export const formEditAvatarInput = document.querySelector('.input_avatar');
 export const nameInput = document.querySelector('.input__text_name_edit');

@@ -1,6 +1,7 @@
 export default class Api {
-    constructor(baseUrl) {
+    constructor(baseUrl, token) {
       this._baseUrl = baseUrl;
+      this._token = token;
     }
 
     _checkwork(res){
@@ -14,7 +15,7 @@ export default class Api {
     getUserInfo() {
       return fetch(`${this._baseUrl}/users/me`, {
         headers: {
-          authorization: 'e6d7cecd-3ca4-4cc6-be79-debc6308da26',
+          authorization: this._token,
           'Content-Type': 'application/json; charset=utf-8'
         }
       })
@@ -24,7 +25,7 @@ export default class Api {
     getInitialCards() {
       return fetch(`${this._baseUrl}/cards`, {
         headers: {
-          authorization: 'e6d7cecd-3ca4-4cc6-be79-debc6308da26',
+          authorization: this._token,
           'Content-Type': 'application/json; charset=utf-8'
         }
       })
@@ -35,7 +36,7 @@ export default class Api {
       return fetch(`${this._baseUrl}/users/me`, {
         method: 'PATCH',
         headers: {
-          authorization: 'e6d7cecd-3ca4-4cc6-be79-debc6308da26',
+          authorization: this._token,
           'Content-Type': 'application/json; charset=utf-8'
         },
         body: JSON.stringify({
@@ -50,7 +51,7 @@ export default class Api {
       return fetch(`${this._baseUrl}/cards`, {
         method: 'POST',
         headers: {
-          authorization: 'e6d7cecd-3ca4-4cc6-be79-debc6308da26',
+          authorization: this._token,
           'Content-Type': 'application/json; charset=utf-8'
         },
         body: JSON.stringify({
@@ -65,7 +66,7 @@ export default class Api {
       return fetch(`${this._baseUrl}/users/me/avatar`, {
         method: 'PATCH',
         headers: {
-          authorization: 'e6d7cecd-3ca4-4cc6-be79-debc6308da26',
+          authorization: this._token,
           'Content-Type': 'application/json; charset=utf-8'
         },
         body: JSON.stringify({
@@ -79,7 +80,7 @@ export default class Api {
       return fetch(`${this._baseUrl}/cards/${cardId}`, {
         method: 'DELETE',
         headers: {
-          authorization: 'e6d7cecd-3ca4-4cc6-be79-debc6308da26',
+          authorization: this._token,
           'Content-Type': 'application/json; charset=utf-8'
         }
       })
@@ -90,7 +91,7 @@ export default class Api {
       return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
         method: 'DELETE',
         headers: {
-          authorization: 'e6d7cecd-3ca4-4cc6-be79-debc6308da26',
+          authorization: this._token,
           'Content-Type': 'application/json; charset=utf-8'
         }
       })
@@ -101,7 +102,7 @@ export default class Api {
       return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
         method: 'PUT',
         headers: {
-          authorization: 'e6d7cecd-3ca4-4cc6-be79-debc6308da26',
+          authorization: this._token,
           'Content-Type': 'application/json; charset=utf-8'
         }
       })

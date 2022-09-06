@@ -9,8 +9,7 @@ export default class PopupWithFormSubmit extends Popup {
     this._handleSubmitCallback = action;
   }
 
-  setEventListeners() {
-    super.setEventListeners();
+  handleSubmit() {
     this._handleSubmitCallback();
-  };
+  }
 };
