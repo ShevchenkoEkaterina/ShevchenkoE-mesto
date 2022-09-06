@@ -17,7 +17,7 @@
 .profile__description{color:#fff;font-size:18px;font-weight:400;line-height:1.22;margin:0 0 0 30px;max-width:336px;overflow:hidden;padding:0;text-overflow:ellipsis;white-space:nowrap}@media (max-width:767px){.profile__description{font-size:14px;margin:0 auto 36px;max-width:282px}}
 .elements{grid-gap:20px 17px;display:grid;grid-template-columns:repeat(3,282px);grid-template-rows:361px;list-style-type:none;margin:0 auto;max-width:880px;padding:0}@media (max-width:1023px){.elements{grid-template-columns:repeat(2,282px);max-width:598px}}@media (max-width:767px){.elements{grid-template-columns:repeat(1,282px);max-width:282px}}
 .element{background-color:#fff;border-radius:10px;margin:0;padding:0}
-.element__upp{margin:0;padding:0;position:relative}
+.element__upp{height:282px;margin:0;padding:0;position:relative;width:282px}
 .element__image{border-top-left-radius:10px;border-top-right-radius:10px;height:282px;margin:0;-o-object-fit:cover;object-fit:cover;padding:0;width:282px}.element__image:hover{cursor:pointer}
 .element__delete{background-color:rgba(1,0,0,0);background-image:url(30f8dc5db3845579184a.png);background-repeat:no-repeat;background-size:contain;border:none;cursor:pointer;height:19px;margin:0;padding:0;position:absolute;right:20px;top:20px;visibility:hidden;width:18px}.element__delete:hover{opacity:.8}
 .element__delete_active{visibility:visible}
