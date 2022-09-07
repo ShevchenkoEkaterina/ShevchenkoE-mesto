@@ -40,8 +40,8 @@ function createCard(data) {
         .catch((err) => {
           console.log(err)
         })
-        cardInfoSubmit.handleSubmit()
       })
+      cardInfoSubmit.handleSubmit()
     })
   },
     handleLikeIconClick: (card) => {
@@ -66,6 +66,7 @@ function createCard(data) {
   });
     const cardElement = card.generateCard();
     card.showDeleteButton()
+    card.wasLiked()
     return cardElement;
 }
 
@@ -74,35 +75,27 @@ const userInfomation = api.getUserInfo()
 .then((result) => {
   return result
 })
-.catch((err) => {
-  console.log(err);
-});
 
 //получение информации об изначальных карточках с сервера
 const initialCards = api.getInitialCards()
 .then((result) => {
   return result
 })
-.catch((err) => {
-  console.log(err);
-});
+
+const cardList = new Section({},".elements")
+let myId
 
 //прогрузка изначальных карточек и информации пользователя на страницу
-const promises = [userInfomation, initialCards]
-Promise.all(promises)
-.then((results) => {
-  userInfo.setUserInfo(results[0].name, results[0].about);
-  userInfo.setUserrAvatar(results[0].avatar);
-  const cardList = new Section({
-    items: results[1],
-    renderer: (card) => {
+Promise.all([userInfomation, initialCards])
+.then(([user, cards]) => {
+  myId = user._id;
+  userInfo.setUserInfo(user.name, user.about);
+  userInfo.setUserrAvatar(user.avatar);
+  cards.reverse();
+  cards.forEach(card => {
       const cardElement = createCard(card);
       cardList.addItem(cardElement);
-      }
-    },
-    ".elements"
-  )
-  cardList.renderItems();
+  })
 })
 .catch((err) => {
   console.log(err);
@@ -123,16 +116,6 @@ function renderLoading(isLoading) {
   }
 }
 
-//запись в константу моего Id пользователя
-const id = api.getUserInfo()
-.then((result) => {
-  return result._id
-})
-.catch((err) => {
-  console.log(err);
-});
-const myId = '6c4ce037d701a0494d4d9124';
-
 //открытие попапа карточки
 function handleCardClick (image, title) {
   popupWithImage.open(image, title);
@@ -145,7 +128,6 @@ const popupAddNew = new PopupWithForm({
     renderLoading(true);
     api.addNewCard(data.title, data.url)
       .then((result) => {
-        const cardList = new Section({},".elements")
         cardList.addItem(createCard(result));
         popupAddNew.close();
       })

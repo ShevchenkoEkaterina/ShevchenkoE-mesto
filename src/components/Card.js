@@ -33,6 +33,14 @@ class Card {
     return this._element;
   }
 
+  wasLiked() {
+    if(this._likes.some(item => item._id === this._myId)) {
+      this._likeButton.classList.add('element__like_active');
+    } else {
+      this._likeButton.classList.remove('element__like_active');
+    }
+  }
+
   isLiked() {
       return (this._likes.some(item => item._id === this._myId));
   }
