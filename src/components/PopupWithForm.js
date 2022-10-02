@@ -1,34 +1,19 @@
-import Popup from "../components/Popup.js";
+import React from 'react';
 
-export default class PopupWithForm extends Popup {
-  constructor({popupSelector, submitHandler}) {
-    super(popupSelector);
-    this._submitHandler = submitHandler;
-    this._inputList = this._popup.querySelectorAll('.input__text')
-  }
+function PopupWithForm(props) {
 
-  close() {
-    super.close();
-    this._inputList.forEach((inputValue) => {
-      inputValue.value ="";
-    }); 
-  };
+  return (
+    <div className={`popup popup_${props.name} ${props.isOpen ? 'popup_opened' : ' '}`}>
+      <div className="popup__container">
+        <button onClick={props.onClose} type="button" className="popup__close"></button>
+        <form className={`input input_${props.name}`}>
+          <h2 className="popup__title">{props.title}</h2>
+          {props.children}
+          <button onClick={props.onClose} type="submit" className="input__save-button">Сохранить</button>
+        </form>
+      </div>
+    </div>
+  );
+}
 
-  _getInputValues() {
-    this._formValues = {};
-    this._inputList.forEach((input) => {
-      this._formValues[input.name] = input.value;
-    });
-
-    return this._formValues;
-  }; 
-
-  setEventListeners() {
-    super.setEventListeners();
-    const formElement = this._popup.querySelector('.input');
-    formElement.addEventListener("submit", (evt) => {
-      evt.preventDefault();
-      this._submitHandler(this._getInputValues());
-    });
-    };
-};
+export default PopupWithForm;

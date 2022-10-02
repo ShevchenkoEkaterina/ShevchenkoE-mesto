@@ -1,0 +1,52 @@
+import React, { useState, useEffect, useContext } from 'react';
+import PopupWithForm from './PopupWithForm';
+
+function EditProfilePopup(props) {
+  const [name, setName] = useState(" ");
+  const [description, setDescription] = useState(" ");
+  const currentUser = useContext(CurrentUserContext);
+
+  useEffect(() => {
+    setName(currentUser.name);
+    setDescription(currentUser.description);
+  }, [currentUser]);
+
+  handleNameChange = (e) => {
+    setName({ name: e.target.value });
+  };
+
+  handleDescriptionChange = (e) => {
+    setDescription({ description: e.target.value });
+  };
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    // Передаём значения управляемых компонентов во внешний обработчик
+    props.onUpdateUser({
+      name,
+      description: description,
+    });
+  } 
+
+  return (
+    <div className={`popup popup_edit ${props.isOpen ? 'popup_opened' : ' '}`}>
+      <div className="popup__container">
+        <button onClick={props.onClose} type="button" className="popup__close"></button>
+        <form className="input input_edit">
+          <h2 className="popup__title">Редактировать профиль</h2>
+          <label className="input__field">
+            <input type="text" onChange={handleSubmit} required minLength="2" maxLength="40" placeholder="Имя" name="name" id="name-input" className="input__text input__text_name_edit"/>
+            <span className="input__text-error" id ="name-input-error"></span>
+          </label>
+          <label className="input__field">
+            <input type="text" required minLength="2" maxLength="200" placeholder="О себе" name="description" id="description-input" className="input__text input__text_description_edit"/>
+            <span className="input__text-error" id ="description-input-error"></span>
+          </label>
+          <button onClick={props.onClose} type="submit" className="input__save-button">Сохранить</button>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+export default EditProfilePopup;

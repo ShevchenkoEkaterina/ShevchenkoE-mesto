@@ -3,6 +3,7 @@
   font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
   margin: 0px auto 0px auto;
   padding: 45px 0 0 0;
+  background: #000000;
 }
 
 @media (max-width: 1279px) {
